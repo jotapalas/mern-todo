@@ -29,8 +29,12 @@ class App extends React.Component{
     render(){
         return (
         <div className="App">
-            <Form addTodo={this.addTodo} />
+            <h1>To-do list</h1>
             <TodoList todos={this.state.todos} removeTodo={this.removeTodo} />
+            {this.state.todos.length === 0 &&
+                <div className='no-tasks'>Add tasks using the form below.</div>
+            }
+            <Form addTodo={this.addTodo} />
         </div>
         );
     }

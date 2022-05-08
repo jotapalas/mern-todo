@@ -21,7 +21,7 @@ class TodoList extends React.Component{
                         <div className='delete-container'>
                         </div>
                     </div>                  
-                    { this.props.todos.length > 0 ? this.props.todos.map(
+                    { this.props.todos.map(
                         todo => 
                             <Todo
                                 key={todo._id}
@@ -29,7 +29,7 @@ class TodoList extends React.Component{
                                 id={todo._id}
                                 removeTodo={this.props.removeTodo}
                             />
-                    ) : <div className='no-tasks'>No tasks. Add a task using the form.</div>}
+                    ) }
                 </div>
             </div>
         );
