@@ -48,9 +48,10 @@
 .buttons-container{
     display: flex;
     align-items: center;
+    width: 10%;
 }
 
-.delete-button, .done-button{
+.delete-button {
     display: flex;
     width: 20px;
     height: 20px;
@@ -65,7 +66,8 @@
     align-items: center;
 }
 
-.delete-button:hover, .done-button:hover{
-    background-color: rgb(97, 97, 97, 0.5);
+.delete-button:hover {
+    background-color: rgba(224, 8, 8, 0.534);
+    color: white;
     cursor: pointer;
 }

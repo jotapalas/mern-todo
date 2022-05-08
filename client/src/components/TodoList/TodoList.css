@@ -10,3 +10,47 @@
     padding-left: 10px;
     padding-right: 10px;
 }
+
+.todo-list-header{
+    display: flex;
+    border-top: 2px solid #6D6D6D;
+    border-bottom: 2px solid #6D6D6D;
+    width: 100%;
+    background-color: #CFCFCF;
+    text-align: left;
+}
+
+.todo-task-container{
+    display: flex;
+    width: 50%;
+}
+
+.todo-task{
+    font-size: 15px;
+    color: #514c4c;
+    padding-right: 10px;
+    padding-left: 10px;
+}
+
+.todo-info-container{
+    display: flex;
+    width: 20%;
+    margin: auto;
+}
+
+.todo-info{
+    font-size: 15px;
+    color: #514c4c;
+    padding-right: 10px;
+    padding-left: 10px;
+}
+
+.delete-container{
+    width: 10%;
+    display: flex;
+    align-items: center;
+}
+
+.no-tasks{
+    margin-top: 20px;
+}

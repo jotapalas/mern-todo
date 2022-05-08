@@ -14,7 +14,7 @@ class Todo extends React.Component{
     }
 
     removeTodo(){
-        this.props.removeTodo(this.props.id);
+        this.props.removeTodo(this.props.todo.id);
     }
 
     markDone(){
@@ -33,13 +33,12 @@ class Todo extends React.Component{
                         <h2 className='todo-task'>{this.props.todo.task}</h2>
                     </div>
                     <div className='todo-info-container'>
-                        <span className='todo-info'>{this.props.todo.dueDate}</span>
+                        <span className='todo-info'>{this.props.todo.dueDate || '-'}</span>
                     </div>
                     <div className='todo-info-container'>
                         <span className='todo-info'>{this.props.todo.status}</span>
                     </div>
                     <div className='buttons-container'>
-                        <button className='done-button' onClick={this.markDone}>v</button>
                         <button className='delete-button' onClick={this.removeTodo}>x</button>
                     </div>
                 </div>
