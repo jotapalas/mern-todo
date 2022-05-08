@@ -4,12 +4,13 @@ const routes = express.Router();
 const todo = require('../controllers/todo.controller')
 
 routes.route('/')
-    .get(function (req, res) {
-        todo.getAllTodos(req, res)
-    })
-    .post(function (req, res) {
-        todo.insertTodo(req, res)
-    })
+    .get(todo.getAllTodos)
+    .post(todo.insertTodo)
+;
+
+routes.route('/:todoId')
+    .put(todo.updateTodo)
+    .delete(todo.deleteTodo)
 ;
 
 module.exports = routes;
