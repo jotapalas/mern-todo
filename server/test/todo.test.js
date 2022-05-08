@@ -97,6 +97,22 @@ describe("todos API", function (){
                 .catch(function (err) {done(err)});
         })
     });
+
+    it("should fail deleting", function (done) {
+        request(app)
+            .delete('/todos/fakeId')
+            .expect(400)
+            .then(function(res) {done()})
+            .catch(function (err) {done(err)});
+    });
+
+    it("should fail updating", function(done) {
+        request(app)
+            .put('/todos/fakeId')
+            .expect(400)
+            .then(function(res) {done()})
+            .catch(function (err) {done(err)});
+    });
 });
 
 after(async function () {
