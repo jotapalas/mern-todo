@@ -31,18 +31,15 @@ describe("todos", function (){
     });
 
     it("should create new todo", function (done) {
-        let beforeCount;
         Todo.count({}, function(err, count) {
-            beforeCount = count;
+            const beforeCount = count;
             request(app)
             .post("/todos")
             .send(newTodo)
             .expect(201)
             .then(function (res) {
-                let newCount;
                 Todo.count({}, function(err, count) {
-                    newCount = count;
-                    expect(newCount).to.be.eql(beforeCount + 1);
+                    expect(count).to.be.eql(beforeCount + 1);
                 });
                 expect(res.body.task).to.be.eql(newTodo.task);
                 done();
