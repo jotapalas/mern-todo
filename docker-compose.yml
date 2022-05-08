@@ -2,8 +2,8 @@ version: '3.7'
 services:
   server:
     build:
-      context: ./
-      dockerfile: ./server/Dockerfile
+      context: ./server
+      dockerfile: Dockerfile
     ports:
       - ${SERVER_PORT}:${SERVER_PORT}
     container_name: ${PROJECT_NAME}-server
@@ -17,7 +17,7 @@ services:
   mongo-db:
     image: mongo
     ports:
-      - "27017:27017"
+      - ${DB_PORT}:${DB_PORT}
     container_name: ${PROJECT_NAME}-mongo-db
     env_file:
       - ./.env

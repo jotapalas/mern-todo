@@ -1,5 +1,5 @@
 # from base image node
-FROM node:8.11-slim
+FROM node:slim
 
 RUN mkdir -p /usr/src/app
 
@@ -18,4 +18,4 @@ COPY ./ .
 EXPOSE ${SERVER_PORT}
 
 # command to run when instantiate an image
-CMD ["npm", "run", "dev"]
+CMD ["npm", "run", "start"]
