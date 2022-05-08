@@ -5,12 +5,11 @@ class Todo extends React.Component{
     constructor(props){
         super(props);
 
+        this.state = this.props.todo;
         this.removeTodo = this.removeTodo.bind(this);
         this.markDone = this.markDone.bind(this);
 
-        this.state = {
-            backgroundColor: ''
-        }
+        
     }
 
     removeTodo(){
@@ -18,27 +17,43 @@ class Todo extends React.Component{
     }
 
     markDone(){
-        if (this.state.backgroundColor === ''){
-            this.setState({ backgroundColor: 'rgb(144,238,144, 0.5)' });
-        } else {
-            this.setState({backgroundColor: ''});
+        let newStatus;
+        switch (this.state.status) {
+            case 'to do':
+                newStatus = 'doing';
+                break;
+            case 'doing':
+                newStatus = 'done';
+                break;
+            default:
+                newStatus = 'to do';
         }
+        this.props.todo.status = newStatus;
+        this.setState(this.props.todo);
     }
 
     render(){
+        let backgroundClass = 'to-do';
+        if (this.state.status === 'doing') {
+            backgroundClass = 'doing';
+        }
+        if (this.state.status === 'done') {
+            backgroundClass = 'done';
+        }
         return (
             <div className='todo-container'>
-                <div className='todo-container-background' style={{backgroundColor: this.state.backgroundColor}}>
+                <div className={'todo-container-background ' + backgroundClass}>
                     <div className='todo-task-container'>
-                        <h2 className='todo-task'>{this.props.todo.task}</h2>
+                        <h2 className='todo-task'>{this.state.task}</h2>
                     </div>
                     <div className='todo-info-container'>
-                        <span className='todo-info'>{this.props.todo.dueDate || '-'}</span>
+                        <span className='todo-info'>{this.state.dueDate || '-'}</span>
                     </div>
                     <div className='todo-info-container'>
-                        <span className='todo-info'>{this.props.todo.status}</span>
+                        <span className='todo-info'>{this.state.status}</span>
                     </div>
                     <div className='buttons-container'>
+                        <button className='delete-button' onClick={this.markDone}>v</button>
                         <button className='delete-button' onClick={this.removeTodo}>x</button>
                     </div>
                 </div>

@@ -2,7 +2,6 @@
     display: flex;
     border-bottom: 1px solid #979797;
     width: 100%;
-
 }
 
 .todo-container-background{
@@ -14,6 +13,18 @@
     padding-left: 2px;
     padding-right: 2px;
     transition: all 0.2s ease-in-out;
+}
+
+.todo-container-background.to-do{
+    background-color: transparent;
+}
+
+.todo-container-background.doing{
+    background-color: #E8F88D;
+}
+
+.todo-container-background.done{
+    background-color: #8DF89A;
 }
 
 .todo-container-background:hover{
