@@ -1,5 +1,17 @@
 version: '3.7'
 services:
+  client:
+    build:
+      context: ./client
+      dockerfile: Dockerfile
+    ports:
+      - ${CLIENT_PORT}:${CLIENT_PORT}
+    container_name: ${PROJECT_NAME}-client
+    env_file:
+      - ./.env
+    depends_on:
+      - server
+
   server:
     build:
       context: ./server

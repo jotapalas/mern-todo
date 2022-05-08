@@ -1,0 +1,40 @@
+.form-container {
+    border-bottom: 2px solid black;
+    margin: auto;
+    width: 40%;
+    display: flex;
+    justify-content: center;
+    padding-bottom: 10px;
+}
+
+.form {
+    width: 100%;
+    padding: 0 10px 0 10px;
+}
+
+.input{
+    width: 30%;
+    display: inline-flex;
+    padding: 8px;
+    border-radius: 10px;
+    outline: none;
+    margin-right: 5px;
+}
+
+.input.task {
+    width: 50%;
+}
+
+.add-button{
+    width: 10%;
+    padding: 10px;
+    font-size: 10pt;
+    border: 2px solid rgb(97, 97, 97);
+    border-radius: 10px;
+    outline: none;
+    background-color: #84C481;
+}
+.add-button:hover{
+    background-color: #ccc;
+    cursor: pointer;
+}

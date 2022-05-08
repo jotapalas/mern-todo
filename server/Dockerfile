@@ -1,5 +1,5 @@
 # from base image node
-FROM node:slim
+FROM node:13.12.0-alpine
 
 RUN mkdir -p /usr/src/app
 
