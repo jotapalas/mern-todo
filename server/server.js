@@ -1,8 +1,17 @@
-const express = require("express");
+const express = require('express');
+const db = require('./db/connection');
 
-app = express();
+let port = process.env.SERVER_PORT || 5000;
+if (process.env.NODE_ENV === 'testing') {
+    port = process.env.SERVER_PORT_TEST || 8000;
+}
+const app = express();
 
-port = process.env.SERVER_PORT || 5000;
+app.use(express.json());
+
+// Routes
+app.use('/todos', require('./api/routes/todo.routes'));
 app.listen(port);
+console.log(`Server started at port ${port}`);
 
-console.log("Server started at port " + port);
+module.exports = app;
