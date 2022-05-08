@@ -30,7 +30,9 @@ describe("todos API", function (){
                     expect(res.body[0].task).to.be.eql(existingTodo.task);
                     done();
                 })
-                .catch(function (err) {done(err)});
+                .catch(function (err) {
+                    done(err);
+                });
         });
     });
 
@@ -52,7 +54,9 @@ describe("todos API", function (){
                     expect(res.body.task).to.be.eql(newTodo.task);
                     done();
                 })
-                .catch(function (err) {done(err)});
+                .catch(function (err) {
+                    done(err);
+                });
         })
     });
 
@@ -75,7 +79,9 @@ describe("todos API", function (){
                 });
                 done();
             })
-            .catch(function (err) {done(err)});;
+            .catch(function (err) {
+                done(err);
+            });
     });
 
     it("should delete todo", function (done) {
@@ -94,7 +100,9 @@ describe("todos API", function (){
                     });
                     done();
                 })
-                .catch(function (err) {done(err)});
+                .catch(function (err) {
+                    done(err);
+                });
         })
     });
 
@@ -102,22 +110,34 @@ describe("todos API", function (){
         request(app)
             .delete('/todos/fakeId')
             .expect(400)
-            .then(function(res) {done()})
-            .catch(function (err) {done(err)});
+            .then(function(res) {
+                done();
+            })
+            .catch(function (err) {
+                done(err);
+            });
     });
 
     it("should fail updating", function(done) {
         request(app)
             .put('/todos/fakeId')
             .expect(400)
-            .then(function(res) {done()})
-            .catch(function (err) {done(err)});
+            .then(function(res) {
+                done();
+            })
+            .catch(function (err) {
+                done(err);
+            });
     });
 });
 
 after(async function () {
-    console.log('Deleting test database...')
+    console.log('Deleting test database...');
     Todo.deleteMany({})
-        .then(function () {console.log('Test database deleted.');})
-        .catch(function (err) {console.error(err);});
+        .then(function () {
+            console.log('Test database deleted.');
+        })
+        .catch(function (err) {
+            console.error(err);
+        });
 });
