@@ -1,9 +1,7 @@
 # from base image node
 FROM node:13.12.0-alpine
 
-RUN mkdir -p /usr/src/app
-
-WORKDIR /usr/src/app
+WORKDIR /app
 
 # copying all the files from your file system to container file system
 COPY package.json .

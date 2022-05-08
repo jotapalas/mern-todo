@@ -1,4 +1,5 @@
 import React from 'react';
+import axios from 'axios';
 import './Todo.css';
 
 class Todo extends React.Component{
@@ -8,12 +9,10 @@ class Todo extends React.Component{
         this.state = this.props.todo;
         this.removeTodo = this.removeTodo.bind(this);
         this.markDone = this.markDone.bind(this);
-
-        
     }
 
     removeTodo(){
-        this.props.removeTodo(this.props.todo.id);
+        this.props.removeTodo(this.state._id);
     }
 
     markDone(){
@@ -28,12 +27,15 @@ class Todo extends React.Component{
             default:
                 newStatus = 'to do';
         }
-        this.props.todo.status = newStatus;
-        this.setState(this.props.todo);
+        axios.put('api/todos/' + this.state._id, {status: newStatus})
+            .then((res) => {
+                this.setState(res.data);
+            });
     }
 
     render(){
         let backgroundClass = 'to-do';
+        let dueDate = this.state.dueDate ? this.state.dueDate.split('T')[0] : '-'
         if (this.state.status === 'doing') {
             backgroundClass = 'doing';
         }
@@ -47,7 +49,7 @@ class Todo extends React.Component{
                         <h2 className='todo-task'>{this.state.task}</h2>
                     </div>
                     <div className='todo-info-container'>
-                        <span className='todo-info'>{this.state.dueDate || '-'}</span>
+                        <span className='todo-info'>{dueDate}</span>
                     </div>
                     <div className='todo-info-container'>
                         <span className='todo-info'>{this.state.status}</span>

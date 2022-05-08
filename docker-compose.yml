@@ -9,6 +9,8 @@ services:
     container_name: ${PROJECT_NAME}-client
     env_file:
       - ./.env
+    volumes:
+      - /app/node_modules
     depends_on:
       - server
 
@@ -21,6 +23,8 @@ services:
     container_name: ${PROJECT_NAME}-server
     env_file:
       - ./.env
+    volumes:
+      - /app/node_modules
     depends_on:
       - mongo-db
 
@@ -33,6 +37,21 @@ services:
       - ./.env
     volumes:
       - mongo-db-vol:/data/db
+
+  nginx:
+    build:
+      dockerfile: Dockerfile
+      context: ./nginx
+    ports:
+      - "3050:80"
+    container_name: ${PROJECT_NAME}-nginx
+    env_file:
+      - ./.env
+    depends_on:
+      - server
+      - client
+    restart: always
+    
 
 volumes:
   mongo-db-vol:

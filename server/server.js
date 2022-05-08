@@ -1,4 +1,5 @@
 const express = require('express');
+const cors = require('cors');
 const db = require('./db/connection');
 
 let port = process.env.SERVER_PORT || 5000;
@@ -7,6 +8,7 @@ if (process.env.NODE_ENV === 'testing') {
 }
 const app = express();
 
+app.use(cors());
 app.use(express.json());
 
 // Routes
