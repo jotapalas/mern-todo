@@ -40,7 +40,7 @@ ____
 To improve this awesome app, there are many things to add:
 
 - **User authentication**: Require login to use the app. Server should return only todos for the authenticated user.
-- **DevOps**: Use environment variables in Nginx configuration.
+- **DevOps**: Use environment variables in Nginx configuration. Also, create a separate docker-compose file for production.
 - **Frontend testing**: Implement it :D
 - **Allow to select status**: The current functionality is that you can go from "to do" status, to "doing", and then to "done". It would be nice to have the status field as a dropdown in frontend so user can select it.
 - **Order elements**: Allow todos to be ordered by task, due date or status.
